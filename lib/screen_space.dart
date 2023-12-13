@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_acs_2/tree.dart';
 import 'package:tutorial_acs_2/requests.dart';
+import 'package:tutorial_acs_2/root.dart';
 
 class ScreenSpace extends StatefulWidget {
   final String id;
@@ -66,7 +67,13 @@ class _StateScreenSpace extends State<ScreenSpace> {
               foregroundColor: Theme.of(context).colorScheme.onPrimary,
               title: Text(snapshot.data!.root.id),
               actions: <Widget>[
-                IconButton(icon: const Icon(Icons.home), onPressed: () {}
+                IconButton(icon: const Icon(Icons.home), onPressed: () {
+                  Navigator.of(context).pop(); // close drawer
+                  Navigator.of(context).push(MaterialPageRoute<void>(
+                    builder: (context) => ScreenBlank(),
+                  ));
+
+                }
                   // TODO go home page = root
                 ),
                 //TODO other actions

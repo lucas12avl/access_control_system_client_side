@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_acs_2/screen_partition.dart';
 import 'package:tutorial_acs_2/screen_space.dart';
+import 'package:tutorial_acs_2/root.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
         // see https://docs.flutter.dev/cookbook/design/themes
       ),
-      home: const ScreenPartition(id: "building"), // ScreenSpace() // TODO: this is ugly, the code depends on the particular tree
+      home: const ScreenBlank(), // ScreenSpace() // TODO: this is ugly, the code depends on the particular tree
     );
   }
 }
