@@ -19,12 +19,37 @@ class _StateScreenSpace extends State<ScreenSpace> {
     futureTree = getTree(widget.id);
   }
 
+  /* // tutorial buildRow
   Widget _buildRow(Door door, int index) {
     return ListTile(
       title: Text('D ${door.id}'),
       trailing: Text('${door.state}, closed=${door.closed}'),
     );
   }
+*/
+
+  Widget _buildRow(Door door, int index) { // session 8 buildRow
+    return ListTile(
+      title: Text('${door.id}'),
+      trailing: door.state == 'locked'
+      // ternary operator
+          ? TextButton(
+          onPressed: () {
+            unlockDoor(door); //if door locked
+            futureTree = getTree(widget.id);
+            setState(() {});
+          },
+          child: Text('Unlock'))
+          : TextButton(
+          onPressed: () {
+            lockDoor(door); // if door unlocked
+            futureTree = getTree(widget.id);
+            setState(() {});
+          },
+          child: const Text('Lock')),
+    );
+  }
+
 
   // future with listview
 // https://medium.com/nonstopio/flutter-future-builder-with-list-view-builder-d7212314e8c9
