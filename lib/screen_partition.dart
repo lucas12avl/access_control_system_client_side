@@ -26,13 +26,15 @@ class _ScreenPartitionState extends State<ScreenPartition> {
     assert (area is Partition || area is Space);
     if (area is Partition) {
       return ListTile(
-        title: Text('P ${area.id}'),
+        leading:  Icon(Icons.space_dashboard_outlined),
+        title: Text(' ${area.id}'),
         onTap: () => _navigateDownPartition(area.id),
         // TODO, navigate down to show children areas
       );
     } else {
       return ListTile(
-        title: Text('S ${area.id}'),
+        leading:  Icon(Icons.crop_square_outlined),
+        title: Text(' ${area.id}'),
         onTap: () => _navigateDownSpace(area.id),
         // TODO, navigate down to show children doors
       );
