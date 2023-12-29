@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tutorial_acs_2/screen_partition.dart';
-import 'package:tutorial_acs_2/screen_space.dart';
 import 'package:tutorial_acs_2/root.dart';
 
 void main() {
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'ACS',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue, // instead of deepPurple
+          seedColor: Colors.indigo, // instead of deepPurple
           brightness: Brightness.light,), // light or dark
         useMaterial3: true,
         textTheme: const TextTheme(
