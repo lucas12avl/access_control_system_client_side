@@ -52,6 +52,17 @@ Future<Tree> getTree(String areaId) async {
   return Tree(decoded);
 }
 
+Future<String> getRoot() async {
+
+  String areaId = "root";
+  Uri uri = Uri.parse("${BASE_URL}/get_children?$areaId");
+  final String responseBody = await sendRequest(uri);
+  Map<String, dynamic> decoded = convert.jsonDecode(responseBody);
+  Tree treeRoot = Tree(decoded);
+  String rootId = treeRoot.root.id;
+  return rootId;
+}
+
 Future<void> lockDoor(Door door) async {
   lockUnlockDoor(door,
       'lock');
@@ -73,4 +84,6 @@ Future<void> lockUnlockDoor(Door door, String action) async {
   print('lock ${door.id}, uri $uri');
   final String responseBody = await sendRequest(uri);
   print('requests.dart : door ${door.id} is ${door.state}');
+
+  //hardcodear las credenciales en el java para poder decir que somos el admin, es muy chungo y hay mas cosas mas importantes
 }

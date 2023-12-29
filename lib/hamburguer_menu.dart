@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutorial_acs_2/requests.dart';
 import 'package:tutorial_acs_2/screen_partition.dart';
 
 
@@ -21,10 +22,11 @@ class TheDrawer {
             leading: const Icon(Icons.holiday_village),
             // https://material.io/resources/icons
             title: const Text('Places'),
-            onTap: () {
+            onTap: () async {
               Navigator.of(context).pop(); // close drawer
-              Navigator.of(context).push(MaterialPageRoute<void>(
-                builder: (context) => ScreenPartition(id: "building"), //TODO: make a function that return the root id instead of hardcodeit bc what if we change the tree?
+              String rootId = await getRoot();
+              Navigator.of(context).push(MaterialPageRoute<void>( //"building"
+                builder: (context) => ScreenPartition(id: rootId),
               ));
 
             },
