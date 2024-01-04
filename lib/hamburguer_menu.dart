@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_acs_2/requests.dart';
 import 'package:tutorial_acs_2/screen_partition.dart';
+import 'screen_favourites.dart';
 
 
 class TheDrawer {
@@ -33,8 +34,14 @@ class TheDrawer {
           ),
           ListTile(
             leading: const Icon(Icons.favorite),
-            title: const Text('Recent'),
-            onTap: () {},
+            title: const Text('Favorites'),
+            onTap: () async {
+              Navigator.of(context).pop(); // close drawer
+              Navigator.of(context).push(MaterialPageRoute<void>( //"building"
+                 builder: (context) => ScreenBlank(),
+          ));
+
+          },
           ),
         ],
       ),

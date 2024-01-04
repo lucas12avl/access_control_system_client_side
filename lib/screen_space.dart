@@ -21,14 +21,6 @@ class _StateScreenSpace extends State<ScreenSpace> {
     futureTree = getTree(widget.id);
   }
 
-  /* // tutorial buildRow
-  Widget _buildRow(Door door, int index) {
-    return ListTile(
-      title: Text('D ${door.id}'),
-      trailing: Text('${door.state}, closed=${door.closed}'),
-    );
-  }
-*/
 
  IconData iconClose(Door door2){
    if (door2.closed) {
@@ -39,6 +31,18 @@ class _StateScreenSpace extends State<ScreenSpace> {
    }
 
  }
+  Color colorClose(Door door){
+
+    if(door.state == 'locked'){
+      return Colors.grey;
+    }
+    else{
+        return Colors.black;
+    }
+    
+  }
+ 
+
 
   IconData iconDoorState(Door door) {
     switch (door.state) {
@@ -54,7 +58,6 @@ class _StateScreenSpace extends State<ScreenSpace> {
         return Icons.error_outline;
     }
   }
-
 
   Color colorDoorState(Door door){
 
@@ -72,35 +75,88 @@ class _StateScreenSpace extends State<ScreenSpace> {
     }
   }
 
-  Widget _buildRow(Door door, int index) { // session 8 buildRow
+  IconData iconFav(Door door) { //TODO implement this
+    //check if the door is in favorite list,
+    // if true,  return Icons.favorite
+    //else return Icons.favorite_border;
+
+    return Icons.favorite_border;
+  }
+
+  Widget _buildRow(Door door, int index) {
     return ListTile(
-      leading:  Icon(iconClose(door)),
+      leading: IconButton(
+        icon: Icon(iconFav(door), color: Colors.deepPurple,), //todo: the door must have a favourite bool, and change the icon if the bool is true or not
+            onPressed: () {
+          //todo implement somewhere a new class favourites that includes a list of doors
+          //todo: when pressed, we have to include o exclude the door from the list of favourites doors
+            },
+
+      ),
       title: Row(
         children: [
-          Text('${door.from} ('),
-          Icon(iconDoorState(door), color:  colorDoorState(door),),
-          Text(')'),
+          Text('${door.from}'),
         ],
       ),
       onTap: () => _navigateDownDoor(door.id),
 
-      trailing: door.state == 'locked'
-      // ternary operator
-          ? TextButton(
-          onPressed: () {
-            unlockDoor(door); //if door locked
-            futureTree = getTree(widget.id);
-            setState(() {});
-          },
-          child: Text('Unlock'))
-          : TextButton(
-          onPressed: () {
-            lockDoor(door); // if door unlocked
-            futureTree = getTree(widget.id);
-            setState(() {});
-          },
-          child: const Text('Lock')),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: Icon(iconClose(door),
+            color: colorClose(door),), // the icon changes if the door is open or closed
+            onPressed: () { // if the icon represents a locked door if pressed, the icon changes and the request will be send it.
+              _handleOpenCloseOp(door);
+            },
+          ),
+          const SizedBox(width: 16),
+          IconButton(
+            icon: Icon(
+              iconDoorState(door),
+              color: colorDoorState(door),
+            ),
+            onPressed: () {
+              _handleLockUnclockOp(door);
+            },
+          ),
+        ],
+      ),
     );
+  }
+
+  void _handleLockUnclockOp(Door door) {
+    Future<void> operation;
+    if (door.state == 'locked') {
+      operation = unlockDoor(door);
+    } else {
+      operation = lockDoor(door);
+    }
+  //only when the operation is finished, we refresh the screen
+    operation.then((_) {
+      // trying to solve some inconsistencies, we found that if we delay the refresh,
+      // the app dont gets stuck on the previous state
+      Future.delayed(const Duration(milliseconds: 3), () {
+        _refresh();
+      });
+    });
+  }
+
+  void _handleOpenCloseOp(Door door) {
+    Future<void> operation;
+    if (door.closed) {
+      operation = openDoor(door);
+    } else {
+      operation = closeDoor(door);
+    }
+    //only when the operation is finished, we refresh the screen
+    operation.then((_) {
+      // trying to solve some inconsistencies, we found that if we delay the refresh,
+      // the app dont gets stuck on the previous state
+      Future.delayed(const Duration(milliseconds: 3), () {
+        _refresh();
+      });
+    });
   }
 
 
@@ -122,13 +178,10 @@ class _StateScreenSpace extends State<ScreenSpace> {
                 IconButton(icon: const Icon(Icons.home), onPressed: () {
                   Navigator.of(context).pop(); // close drawer
                   Navigator.of(context).push(MaterialPageRoute<void>(
-                    builder: (context) => ScreenBlank(),
+                    builder: (context) => const ScreenBlank(),
                   ));
-
                 }
-                  // TODO go home page = root
                 ),
-                //TODO other actions
               ],
             ),
             body: ListView.separated(
@@ -148,14 +201,14 @@ class _StateScreenSpace extends State<ScreenSpace> {
         return Container(
             height: MediaQuery.of(context).size.height,
             color: Colors.white,
-            child: Center(
+            child: const Center(
               child: CircularProgressIndicator(),
             ));
       },
     );
   }
 
-  //funciones que habra que usar para ir a la pantalla de la info de la puerta
+  //TODO must impelment or delete this before delivering it
   void _navigateDownDoor(String childId) {
     Navigator.of(context)
         .push(MaterialPageRoute<void>(

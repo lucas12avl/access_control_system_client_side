@@ -87,3 +87,30 @@ Future<void> lockUnlockDoor(Door door, String action) async {
 
   //hardcodear las credenciales en el java para poder decir que somos el admin, es muy chungo y hay mas cosas mas importantes
 }
+
+
+// functions to send request about open or close a selected door
+Future<void> openDoor(Door door) async {
+  openCloseDoor(door,
+      'open');
+}
+Future<void> closeDoor(Door door) async {
+  openCloseDoor(door,
+      'close');
+}
+Future<void> openCloseDoor(Door door, String action) async {
+// From the simulator : when asking to lock door D1, of parking, the request is
+// http://localhost:8080/reader?credential=11343&action=lock
+// &datetime=2023-12-08T09:30&doorId=D1
+  assert ((action=='open') | (action=='close'));
+  String strNow = DATEFORMATTER.format(DateTime.now());
+  print(strNow);
+  Uri uri = Uri.parse("${BASE_URL}/reader?credential=11343&action=$action"
+      "&datetime=$strNow&doorId=${door.id}");
+// credential 11343 corresponds to user Ana of Administrator group
+  print('close ${door.id}, uri $uri');
+  final String responseBody = await sendRequest(uri);
+  print('requests.dart : door ${door.id} is ${door.state}');
+
+  //hardcodear las credenciales en el java para poder decir que somos el admin, es muy chungo y hay mas cosas mas importantes
+}

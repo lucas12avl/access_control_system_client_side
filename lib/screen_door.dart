@@ -78,7 +78,7 @@ class _StateScreenDoor extends State<ScreenDoor> {
                   ));
 
                 }
-                  // TODO go home page = root
+
                 ),
                 //TODO other actions
               ],
@@ -93,6 +93,7 @@ class _StateScreenDoor extends State<ScreenDoor> {
               const Divider(),
             ),
           );
+
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
@@ -103,7 +104,8 @@ class _StateScreenDoor extends State<ScreenDoor> {
             child: Center(
               child: CircularProgressIndicator(),
             ));
-      },
+
+      }, //builder
     );
   }
 
