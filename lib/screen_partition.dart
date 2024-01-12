@@ -24,19 +24,34 @@ class _ScreenPartitionState extends State<ScreenPartition> {
 
   Widget _buildRow(Area area, int index) {
     assert (area is Partition || area is Space);
+    futureTree = getTree(widget.id);
+
     if (area is Partition) {
       return ListTile(
         leading:  Icon(Icons.space_dashboard_outlined),
-        title: Text(' ${area.id}'),
+        title: Row(
+          children: [
+            Text(' ${area.id}' ),
+            SizedBox( width: 10,),
+            Text('placeholder estado puertas', style: TextStyle(color: Colors.grey)),
+          ],
+        ),
+
         onTap: () => _navigateDownPartition(area.id),
-        // TODO, navigate down to show children areas
+
       );
     } else {
       return ListTile(
         leading:  Icon(Icons.crop_square_outlined),
-        title: Text(' ${area.id}'),
+        title: Row(
+          children: [
+            Text(' ${area.id}' ),
+            SizedBox( width: 10,),
+            Text('placeholder estado puertas', style: TextStyle(color: Colors.grey)),
+          ],
+        ),
         onTap: () => _navigateDownSpace(area.id),
-        // TODO, navigate down to show children doors
+
       );
     }
   }

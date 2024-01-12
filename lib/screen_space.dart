@@ -126,37 +126,37 @@ class _StateScreenSpace extends State<ScreenSpace> {
   }
 
   void _handleLockUnclockOp(Door door) {
-    Future<void> operation;
+
     if (door.state == 'locked') {
-      operation = unlockDoor(door);
+       unlockDoor(door);
     } else {
-      operation = lockDoor(door);
+     lockDoor(door);
     }
-  //only when the operation is finished, we refresh the screen
-    operation.then((_) {
-      // trying to solve some inconsistencies, we found that if we delay the refresh,
-      // the app dont gets stuck on the previous state
-      Future.delayed(const Duration(milliseconds: 3), () {
+    //only when the operation lock/unlock is finished, we refresh the screen 3 milliseconds after
+
+    // trying to solve some inconsistencies, we found that if we delay the refresh,
+    // the app dont gets stuck on the previous state
+    Future.delayed(const Duration(milliseconds: 3), () {
         _refresh();
-      });
     });
+
   }
 
   void _handleOpenCloseOp(Door door) {
-    Future<void> operation;
+
     if (door.closed) {
-      operation = openDoor(door);
+      openDoor(door);
     } else {
-      operation = closeDoor(door);
+      closeDoor(door);
     }
-    //only when the operation is finished, we refresh the screen
-    operation.then((_) {
-      // trying to solve some inconsistencies, we found that if we delay the refresh,
-      // the app dont gets stuck on the previous state
-      Future.delayed(const Duration(milliseconds: 3), () {
+    //only when the operation open/close is finished, we refresh the screen 3 milliseconds after
+
+    // trying to solve some inconsistencies, we found that if we delay the refresh,
+    // the app dont gets stuck on the previous state
+    Future.delayed(const Duration(milliseconds: 3), () {
         _refresh();
-      });
     });
+
   }
 
 
@@ -208,7 +208,7 @@ class _StateScreenSpace extends State<ScreenSpace> {
     );
   }
 
-  //TODO must impelment or delete this before delivering it
+
   void _navigateDownDoor(String childId) {
     Navigator.of(context)
         .push(MaterialPageRoute<void>(
