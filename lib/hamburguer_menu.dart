@@ -36,7 +36,7 @@ class TheDrawer {
           ),
           ListTile(
             leading: const Icon(Icons.favorite),
-            title: const Text('Favorites'),
+            title:  Text(AppLocalizations.of(context)!.favourite),
             onTap: () async {
               Navigator.of(context).pop(); // close drawer
               Navigator.of(context).push(MaterialPageRoute<void>( //"building"

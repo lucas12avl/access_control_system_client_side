@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_acs_2/root.dart';
 import 'package:flutter_gen/gen_l10n/app.localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,14 +31,16 @@ class MyApp extends StatelessWidget {
       home: const ScreenBlank(), // ScreenSpace()
       localizationsDelegates: [
         AppLocalizations.delegate,
-
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [
         Locale('es'),
         Locale('en'),
         Locale('ca')
       ],
-      locale: Locale('en'),
+      locale: Locale('es'),
     );
   }
 }

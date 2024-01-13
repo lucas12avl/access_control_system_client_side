@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'hamburguer_menu.dart';
 
+
 class ScreenBlank extends StatefulWidget { //stateful por que el widget puede ir variando (va a contener un menu de hamburguesa)
 // al ser stateful debemos crear clases state que seran los posibles estados de esta clase
 // cada estado es como un diseño unico que se da a la clase stateful
