@@ -1,0 +1,9 @@
+{
+  "@@locale": "en",
+  "helloWorld": "Hello, World!",
+  "places": "Places",
+  "favourite": "Favourites",
+  "claveParaDefinir": "la traduccion del valor que vamos a usar si estamos en el locale english",
+  "observacion": "si añadimos nuevas traducciones a algun archivo o nuevos ficheros (EJ: añadimos traduccion a catalan con el fichero ca.arb) debemos ejecutar el comando 'flutter gen-l10n' para que se generar el archivo que de verdad contiene las traducciones y asi se utilicen en la app "
+}
+
