@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_acs_2/root.dart';
+import 'package:flutter_gen/gen_l10n/app.localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +28,16 @@ class MyApp extends StatelessWidget {
         // see https://docs.flutter.dev/cookbook/design/themes
       ),
       home: const ScreenBlank(), // ScreenSpace()
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+
+      ],
+      supportedLocales: [
+        Locale('es'),
+        Locale('en'),
+        Locale('ca')
+      ],
+      locale: Locale('en'),
     );
   }
 }
