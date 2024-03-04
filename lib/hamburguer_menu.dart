@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app.localizations.dart'; //necesario para p
 class TheDrawer {
   late Drawer drawer; //late porque tendremos un drawer que al ponerse, luego no se podra cambiar
 
-  TheDrawer(BuildContext context) {
+  TheDrawer(BuildContext context) { //constructor de la clase
 
     drawer = Drawer(
 

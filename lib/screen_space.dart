@@ -75,7 +75,7 @@ class _StateScreenSpace extends State<ScreenSpace> {
     }
   }
 
-  IconData iconFav(Door door) { //TODO implement this
+  IconData iconFav(Door door) {
     //check if the door is in favorite list,
     // if true,  return Icons.favorite
     //else return Icons.favorite_border;
@@ -87,17 +87,9 @@ class _StateScreenSpace extends State<ScreenSpace> {
     return ListTile(
       leading: IconButton(
         icon: Icon(iconFav(door), color: Colors.deepPurple,), //todo: the door must have a favourite bool, and change the icon if the bool is true or not
-            onPressed: () {
-          //todo implement somewhere a new class favourites that includes a list of doors
-          //todo: when pressed, we have to include o exclude the door from the list of favourites doors
-            },
-
+            onPressed: () {}
       ),
-      title: Row(
-        children: [
-          Text('${door.from}'),
-        ],
-      ),
+      title: Text('${door.from}'),
       onTap: () => _navigateDownDoor(door.id),
 
       trailing: Row(
