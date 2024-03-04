@@ -12,9 +12,7 @@ class ScreenBlank extends StatefulWidget {
 class _ScreenBlankState extends State<ScreenBlank> {
 
   @override
-
   Widget build(BuildContext context) {
-
     return Scaffold(
       drawer: TheDrawer(context).drawer,
       appBar: AppBar(
@@ -29,7 +27,7 @@ class _ScreenBlankState extends State<ScreenBlank> {
         ),
       ),
 
-      //todo: implement the same structure with the screen_space.dart, a build that implemnts a build_row and makes the door from the list of favourites doors
+      //TODO: implement the same structure with the screen_space.dart, a build that implemnts a build_row and makes the door from the list of favourites doors
     );
   }
 }
