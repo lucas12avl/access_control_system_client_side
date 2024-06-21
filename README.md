@@ -3,7 +3,7 @@
 We can observe how the changes that the client makes from the mobile application are reflected in the server, being able to close propped doors, closing/locking doors and vice versa
 
 ## Overview
-This milestone focuses on developing the user interface for the mobile application of our Access Control System (ACS). The app allows users to remotely manage access to rooms and areas within a building, providing functionalities such as locking, unlocking, opening, and closing doors interacting with the "access_control_system_server_side".
+This milestone focuses on developing the user interface for the mobile application of our Access Control System (ACS) using flutter Dart. The app allows users to remotely manage access to rooms and areas within a building, providing functionalities such as locking, unlocking, opening, and closing doors interacting with the "access_control_system_server_side".
 
 ## Features
 - **Navigation**: Users can navigate through the hierarchy of partitions, spaces, and doors within the building.
