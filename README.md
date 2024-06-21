@@ -1,5 +1,5 @@
 # Access Control System - Client Side
-![few features demostration](./project%20images/features-client-side.gif)
+![few features demostration](./project%20images/features-client-sideV2.gif)
 
 ## Overview
 This milestone focuses on developing the user interface for the mobile application of our Access Control System (ACS). The app allows users to remotely manage access to rooms and areas within a building, providing functionalities such as locking, unlocking, opening, and closing doors interacting with the "access_control_system_server_side".
